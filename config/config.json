@@ -1,10 +1,10 @@
 {
   "configName": "dev",
-  "ip": "localhost",
-  "port": "8080",
-  "basePath": "/ks/km-switch/2.0.0.2",
   "hosts": [
     {
+      "ip": "localhost",
+      "port": "8081",
+      "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "Prepaid Replenishment",
       "path": "/prepaidReplenishment",
       "transactionsPerMinute": 20,
@@ -90,6 +90,9 @@
       ]
     },
     {
+      "ip": "localhost",
+      "port": "8081",
+      "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "Balance Inquery",
       "path": "/balanceInquery",
       "transactionsPerMinute": 20,
@@ -175,6 +178,9 @@
       ]
     },
     {
+      "ip": "localhost",
+      "port": "8080",
+      "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "Pre Authorization",
       "path": "/preAuthorization",
       "transactionsPerMinute": 20,
@@ -260,6 +266,9 @@
       ]
     },
     {
+      "ip": "localhost",
+      "port": "8080",
+      "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "Redemption",
       "path": "/redemption",
       "transactionsPerMinute": 20,
@@ -345,6 +354,9 @@
       ]
     },
     {
+      "ip": "localhost",
+      "port": "8082",
+      "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "ReversalRedemption",
       "path": "/reversalRedemption",
       "transactionsPerMinute": 20,
@@ -430,6 +442,9 @@
       ]
     },
     {
+      "ip": "localhost",
+      "port": "8082",
+      "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "Redepmtion Post Void",
       "path": "/redemptionPostVoid",
       "transactionsPerMinute": 20,
