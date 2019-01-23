@@ -12,7 +12,8 @@ public class Host
     private String basePath;
     private String hostname;
     private String path;
-    private int transactionsPerMinute;
+    private int transactionsPerSecond;
+    private int stressingSeconds;
     private List<TransactionRequest> transactions;
 
     public String getIp() {
@@ -59,14 +60,14 @@ public class Host
         this.path = path;
     }
 
-    public int getTransactionsPerMinute()
+    public int getTransactionsPerSecond()
     {
-        return transactionsPerMinute;
+        return transactionsPerSecond;
     }
 
-    public void setTransactionsPerMinute(int transactionsPerMinute)
+    public void setTransactionsPerSecond(int transactionsPerSecond)
     {
-        this.transactionsPerMinute = transactionsPerMinute;
+        this.transactionsPerSecond = transactionsPerSecond;
     }
 
     public List<TransactionRequest> getTransactions()
@@ -77,5 +78,15 @@ public class Host
     public void setTransactions(List<TransactionRequest> transactions)
     {
         this.transactions = transactions;
+    }
+
+    public int getStressingSeconds()
+    {
+        return stressingSeconds;
+    }
+
+    public void setStressingSeconds(int stressingSeconds)
+    {
+        this.stressingSeconds = stressingSeconds;
     }
 }

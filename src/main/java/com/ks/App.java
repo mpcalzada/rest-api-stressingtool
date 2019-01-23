@@ -23,29 +23,25 @@ public class App
         Configuration.readConfig();
         configurationData = ConfigurationData.getInstance();
         new App().start();
-        while (true)
-        {
-            Thread.sleep(5000);
-        }
     }
 
-    public void start()
+    public void start() throws InterruptedException
     {
         for (Host host : configurationData.getHosts())
         {
-            System.out.println("Sending transaction to " + host.getHostname());
-            try
+            for (TransactionRequest transactionRequest : host.getTransactions())
             {
-                for (TransactionRequest transactionRequest : host.getTransactions())
+                for (int second = 0; second < host.getStressingSeconds(); second++)
                 {
-                    new Thread(() -> this.send(transactionRequest, host.getPath(), host)).start();
-                    Thread.sleep(host.getTransactionsPerMinute());
+                    for (int tranNumber = 1; tranNumber <= host.getTransactionsPerSecond(); tranNumber++)
+                    {
+                        System.out.println("Sending transaction to " + host.getHostname() + " numero :" + tranNumber);
+                        new Thread(() -> this.send(transactionRequest, host.getPath(), host)).start();
+                    }
+                    Thread.sleep(1000);
                 }
             }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
+            Thread.sleep(40000);
         }
     }
 
@@ -53,7 +49,6 @@ public class App
     {
         try
         {
-            final LinkedTreeMap response;
             final ApiClient apiClient;
             final TransactionsApi transactionsApi;
             final Object untypedResponse;
@@ -68,10 +63,7 @@ public class App
 
             System.out.println("Enviando transaction id: " + request.getTransactionId());
             untypedResponse = transactionsApi.genericPost(request, hostPath);
-
-            response = (LinkedTreeMap) untypedResponse;
-
-            System.out.println(response.toString());
+            System.out.println(untypedResponse.toString());
         }
         catch (Exception e)
         {
