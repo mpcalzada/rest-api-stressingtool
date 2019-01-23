@@ -28,12 +28,17 @@ public class App {
 
     public void start() {
         for (Host host : configurationData.getHosts()) {
-            System.out.println("Sending transaction to " + host.getHostname());
+
             try {
                 for (TransactionRequest transactionRequest : host.getTransactions()) {
-                    Thread.sleep(1000 / host.getTransactionsPerMinute());
-                    new Thread(() -> this.send(transactionRequest, host.getPath(), host)).start();
-                    esperar();
+                    for (int i = 0; i <= host.getTransactionsPerMinute(); i++)
+                    {
+                        System.out.println("Sending transaction to " + host.getHostname() + " numero :" + i);
+                        Thread.sleep(1000 / host.getTransactionsPerMinute());
+                        new Thread(() -> this.send(transactionRequest, host.getPath(), host)).start();
+                        esperar();
+                    }
+
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
