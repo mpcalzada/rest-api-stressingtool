@@ -3,7 +3,7 @@
   "hosts": [
     {
       "ip": "localhost",
-      "port": "8081",
+      "port": "5100",
       "basePath": "/ks/km-switch/2.0.0.2",
       "hostname": "Prepaid Replenishment",
       "path": "/prepaidReplenishment",

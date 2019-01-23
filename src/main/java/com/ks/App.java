@@ -11,38 +11,48 @@ import com.ks.configuation.Host;
 /**
  * Hello world!
  */
-public class App {
+public class App
+{
 
     private static ConfigurationData configurationData = new ConfigurationData();
     private static int transactionCount = 0;
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException
+    {
         Configuration.readConfig();
         configurationData = ConfigurationData.getInstance();
         new App().start();
-        while (true) {
+        while (true)
+        {
             Thread.sleep(5000);
         }
     }
 
-    public void start() {
-        for (Host host : configurationData.getHosts()) {
+    public void start()
+    {
+        for (Host host : configurationData.getHosts())
+        {
             System.out.println("Sending transaction to " + host.getHostname());
-            try {
-                for (TransactionRequest transactionRequest : host.getTransactions()) {
-                    Thread.sleep(1000 / host.getTransactionsPerMinute());
+            try
+            {
+                for (TransactionRequest transactionRequest : host.getTransactions())
+                {
                     new Thread(() -> this.send(transactionRequest, host.getPath(), host)).start();
-                    esperar();
+                    Thread.sleep(host.getTransactionsPerMinute());
                 }
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e)
+            {
                 e.printStackTrace();
             }
         }
     }
 
-    private void send(TransactionRequest request, String hostPath, Host host) {
-        try {
+    private void send(TransactionRequest request, String hostPath, Host host)
+    {
+        try
+        {
             final LinkedTreeMap response;
             final ApiClient apiClient;
             final TransactionsApi transactionsApi;
@@ -62,17 +72,11 @@ public class App {
             response = (LinkedTreeMap) untypedResponse;
 
             System.out.println(response.toString());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.out.println("Error transaction id: " + request.getTransactionId() + "Error: " + e.getMessage());
 
-        }
-    }
-
-    private void esperar() {
-        try {
-            Thread.sleep(250);
-        } catch (InterruptedException e) {
-            System.out.println("Error al esperar");
         }
     }
 }
