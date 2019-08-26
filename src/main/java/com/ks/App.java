@@ -9,6 +9,7 @@ import com.ks.client.model.TransactionRequest;
 import com.ks.configuation.Configuration;
 import com.ks.configuation.ConfigurationData;
 import com.ks.configuation.Host;
+import com.ks.reporting.Report;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -85,6 +86,7 @@ public class App
             LinkedTreeMap response = (LinkedTreeMap) transactionsApi.genericPost(request, hostPath);
             Stats.newResponse();
             System.out.println("Response:\t" + request.getTransactionId() + " - " + sd.format(new Date()) + response.toString());
+            Report.getInstance().save(request, response.toString(), false);
         }
         catch (ApiException e)
         {
@@ -97,11 +99,13 @@ public class App
                 Stats.newError();
             }
             System.out.println("Error transaction id: " + request.getTransactionId() + "Error: " + e.toString() + e.getResponseBody() + e.toString());
+            Report.getInstance().save(request, e.getResponseBody(), true);
         }
         catch (Exception e)
         {
             Stats.newError();
             System.out.println("Generic error transaction id: " + request.getTransactionId() + "Error: " + e.toString() + e.getMessage());
+            Report.getInstance().save(request, e.toString(), true);
         }
     }
 }
