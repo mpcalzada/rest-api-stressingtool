@@ -3,17 +3,17 @@
   "hosts": [
     {
       "ip": "localhost",
-      "port": "5600",
-      "basePath": "/ks/km-autorizador-lealtad",
+      "port": "8080",
+      "basePath": "/ks/km-switch",
       "hostname": "PrepaidReplenishment",
       "path": "/prepaidReplenishment",
-      "transactionsPerSecond": 50,
+      "transactionsPerSecond": 1,
       "stressingSeconds": 1,
       "transactions": [
         {
           "messageType": "01",
           "transactionType": "000000",
-          "cardNumber": "9806377020733126",
+          "cardNumber": "5200216541314422",
           "track2": "5200216541314422=1812201433671817",
           "expirationDate": "0125",
           "amount": "1",

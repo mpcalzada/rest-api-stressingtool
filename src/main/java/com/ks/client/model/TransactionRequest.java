@@ -16,8 +16,8 @@ package com.ks.client.model;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.math.BigDecimal;
 import java.util.Objects;
+
 
 /**
  * TransactionRequest
@@ -47,7 +47,7 @@ public class TransactionRequest
     private String expirationDate = null;
 
     @SerializedName("amount")
-    private BigDecimal amount = null;
+    private Double amount = null;
 
     @SerializedName("shop_number")
     private Integer shopNumber = null;
@@ -91,7 +91,14 @@ public class TransactionRequest
     @SerializedName("security_data")
     private SecurityData securityData = null;
 
-    private static int transactionCount = 0;
+    @SerializedName("giftcard")
+    private GiftCard giftcard = null;
+
+    @SerializedName("check")
+    private Check check = null;
+
+    @SerializedName("diestel")
+    private Diestel diestel = null;
 
     public TransactionRequest messageType(String messageType)
     {
@@ -249,7 +256,7 @@ public class TransactionRequest
         this.expirationDate = expirationDate;
     }
 
-    public TransactionRequest amount(BigDecimal amount)
+    public TransactionRequest amount(Double amount)
     {
         this.amount = amount;
         return this;
@@ -261,12 +268,12 @@ public class TransactionRequest
      * @return amount
      **/
     @ApiModelProperty(example = "985.15", required = true, value = "Amount of the operation")
-    public BigDecimal getAmount()
+    public Double getAmount()
     {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount)
+    public void setAmount(Double amount)
     {
         this.amount = amount;
     }
@@ -577,6 +584,71 @@ public class TransactionRequest
         this.securityData = securityData;
     }
 
+    public TransactionRequest giftcard(GiftCard giftcard)
+    {
+        this.giftcard = giftcard;
+        return this;
+    }
+
+    /**
+     * Get giftcard
+     *
+     * @return giftcard
+     **/
+    @ApiModelProperty(value = "")
+    public GiftCard getGiftcard()
+    {
+        return giftcard;
+    }
+
+    public void setGiftcard(GiftCard giftcard)
+    {
+        this.giftcard = giftcard;
+    }
+
+    public TransactionRequest check(Check check)
+    {
+        this.check = check;
+        return this;
+    }
+
+    /**
+     * Get check
+     *
+     * @return check
+     **/
+    @ApiModelProperty(value = "")
+    public Check getCheck()
+    {
+        return check;
+    }
+
+    public void setCheck(Check check)
+    {
+        this.check = check;
+    }
+
+    public TransactionRequest diestel(Diestel diestel)
+    {
+        this.diestel = diestel;
+        return this;
+    }
+
+    /**
+     * Get diestel
+     *
+     * @return diestel
+     **/
+    @ApiModelProperty(value = "")
+    public Diestel getDiestel()
+    {
+        return diestel;
+    }
+
+    public void setDiestel(Diestel diestel)
+    {
+        this.diestel = diestel;
+    }
 
     @Override
     public boolean equals(Object o)
@@ -590,13 +662,67 @@ public class TransactionRequest
             return false;
         }
         TransactionRequest transactionRequest = (TransactionRequest) o;
-        return Objects.equals(this.messageType, transactionRequest.messageType) && Objects.equals(this.transactionType, transactionRequest.transactionType) && Objects.equals(this.cardNumber, transactionRequest.cardNumber) && Objects.equals(this.cvv2, transactionRequest.cvv2) && Objects.equals(this.track1, transactionRequest.track1) && Objects.equals(this.track2, transactionRequest.track2) && Objects.equals(this.expirationDate, transactionRequest.expirationDate) && Objects.equals(this.amount, transactionRequest.amount) && Objects.equals(this.shopNumber, transactionRequest.shopNumber) && Objects.equals(this.transactionDate, transactionRequest.transactionDate) && Objects.equals(this.transactionTime, transactionRequest.transactionTime) && Objects.equals(this.transactionId, transactionRequest.transactionId) && Objects.equals(this.transactionTimeout, transactionRequest.transactionTimeout) && Objects.equals(this.currencyCode, transactionRequest.currencyCode) && Objects.equals(this.merchantType, transactionRequest.merchantType) && Objects.equals(this.affiliation, transactionRequest.affiliation) && Objects.equals(this.banamexAffiliation, transactionRequest.banamexAffiliation) && Objects.equals(this.deferredPayments, transactionRequest.deferredPayments) && Objects.equals(this.points, transactionRequest.points) && Objects.equals(this.pinpad, transactionRequest.pinpad) && Objects.equals(this.emv, transactionRequest.emv) && Objects.equals(this.securityData, transactionRequest.securityData);
+        return Objects.equals(this.messageType, transactionRequest.messageType) &&
+
+                Objects.equals(this.transactionType, transactionRequest.transactionType) &&
+
+                Objects.equals(this.cardNumber, transactionRequest.cardNumber) &&
+
+                Objects.equals(this.cvv2, transactionRequest.cvv2) &&
+
+                Objects.equals(this.track1, transactionRequest.track1) &&
+
+                Objects.equals(this.track2, transactionRequest.track2) &&
+
+                Objects.equals(this.expirationDate, transactionRequest.expirationDate) &&
+
+                Objects.equals(this.amount, transactionRequest.amount) &&
+
+                Objects.equals(this.shopNumber, transactionRequest.shopNumber) &&
+
+                Objects.equals(this.transactionDate, transactionRequest.transactionDate) &&
+
+                Objects.equals(this.transactionTime, transactionRequest.transactionTime) &&
+
+                Objects.equals(this.transactionId, transactionRequest.transactionId) &&
+
+                Objects.equals(this.transactionTimeout, transactionRequest.transactionTimeout) &&
+
+                Objects.equals(this.currencyCode, transactionRequest.currencyCode) &&
+
+                Objects.equals(this.merchantType, transactionRequest.merchantType) &&
+
+                Objects.equals(this.affiliation, transactionRequest.affiliation) &&
+
+                Objects.equals(this.banamexAffiliation, transactionRequest.banamexAffiliation) &&
+
+                Objects.equals(this.deferredPayments, transactionRequest.deferredPayments) &&
+
+                Objects.equals(this.points, transactionRequest.points) &&
+
+                Objects.equals(this.pinpad, transactionRequest.pinpad) &&
+
+                Objects.equals(this.emv, transactionRequest.emv) &&
+
+                Objects.equals(this.securityData, transactionRequest.securityData) &&
+
+                Objects.equals(this.giftcard, transactionRequest.giftcard) &&
+
+                Objects.equals(this.check, transactionRequest.check) &&
+
+                Objects.equals(this.diestel, transactionRequest.diestel);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(messageType, transactionType, cardNumber, cvv2, track1, track2, expirationDate, amount, shopNumber, transactionDate, transactionTime, transactionId, transactionTimeout, currencyCode, merchantType, affiliation, banamexAffiliation, deferredPayments, points, pinpad, emv, securityData);
+        return Objects.hash(messageType, transactionType, cardNumber, cvv2, track1, track2, expirationDate, amount,
+
+                shopNumber, transactionDate, transactionTime, transactionId, transactionTimeout, currencyCode,
+
+                merchantType, affiliation, banamexAffiliation, deferredPayments, points, pinpad, emv, securityData,
+
+                giftcard, diestel);
     }
 
 
@@ -628,6 +754,9 @@ public class TransactionRequest
         sb.append("    pinpad: ").append(toIndentedString(pinpad)).append("\n");
         sb.append("    emv: ").append(toIndentedString(emv)).append("\n");
         sb.append("    securityData: ").append(toIndentedString(securityData)).append("\n");
+        sb.append("    giftcard: ").append(toIndentedString(giftcard)).append("\n");
+        sb.append("    check: ").append(toIndentedString(check)).append("\n");
+        sb.append("    diestel: ").append(toIndentedString(diestel)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -660,5 +789,7 @@ public class TransactionRequest
         }
         return refill.toString();
     }
+
+
 }
 

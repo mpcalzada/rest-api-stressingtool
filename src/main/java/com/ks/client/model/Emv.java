@@ -107,10 +107,10 @@ public class Emv {
   }
 
    /**
-   * Transaction Currency Code
+   * ColectorTransaction Currency Code
    * @return emv5F2A
   **/
-  @ApiModelProperty(example = "5F2A020484", value = "Transaction Currency Code")
+  @ApiModelProperty(example = "5F2A020484", value = "ColectorTransaction Currency Code")
   public String getEmv5F2A() {
     return emv5F2A;
   }
@@ -233,10 +233,10 @@ public class Emv {
   }
 
    /**
-   * Transaction Date (AAMMDD)
+   * ColectorTransaction Date (AAMMDD)
    * @return emv9A
   **/
-  @ApiModelProperty(example = "9A03170916", value = "Transaction Date (AAMMDD)")
+  @ApiModelProperty(example = "9A03170916", value = "ColectorTransaction Date (AAMMDD)")
   public String getEmv9A() {
     return emv9A;
   }
@@ -251,10 +251,10 @@ public class Emv {
   }
 
    /**
-   * Transaction Type
+   * ColectorTransaction Type
    * @return emv9C
   **/
-  @ApiModelProperty(example = "9C0100", value = "Transaction Type")
+  @ApiModelProperty(example = "9C0100", value = "ColectorTransaction Type")
   public String getEmv9C() {
     return emv9C;
   }
@@ -287,10 +287,10 @@ public class Emv {
   }
 
    /**
-   * Transaction Amount
+   * ColectorTransaction Amount
    * @return emv9F02
   **/
-  @ApiModelProperty(example = "9F0206000000065989", value = "Transaction Amount")
+  @ApiModelProperty(example = "9F0206000000065989", value = "ColectorTransaction Amount")
   public String getEmv9F02() {
     return emv9F02;
   }
@@ -485,10 +485,10 @@ public class Emv {
   }
 
    /**
-   * Application Transaction Counter
+   * Application ColectorTransaction Counter
    * @return emv9F36
   **/
-  @ApiModelProperty(example = "9F36020015", value = "Application Transaction Counter")
+  @ApiModelProperty(example = "9F36020015", value = "Application ColectorTransaction Counter")
   public String getEmv9F36() {
     return emv9F36;
   }
@@ -521,10 +521,10 @@ public class Emv {
   }
 
    /**
-   * Transaction Sequence Counter
+   * ColectorTransaction Sequence Counter
    * @return emv9F41
   **/
-  @ApiModelProperty(example = "9F410400095101", value = "Transaction Sequence Counter")
+  @ApiModelProperty(example = "9F410400095101", value = "ColectorTransaction Sequence Counter")
   public String getEmv9F41() {
     return emv9F41;
   }
@@ -539,10 +539,10 @@ public class Emv {
   }
 
    /**
-   * Transaction Category Code
+   * ColectorTransaction Category Code
    * @return emv9F53
   **/
-  @ApiModelProperty(example = "9F530152", value = "Transaction Category Code")
+  @ApiModelProperty(example = "9F530152", value = "ColectorTransaction Category Code")
   public String getEmv9F53() {
     return emv9F53;
   }

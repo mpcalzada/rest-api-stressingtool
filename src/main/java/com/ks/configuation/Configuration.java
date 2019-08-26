@@ -8,12 +8,12 @@ import java.io.File;
 public class Configuration
 {
 
-    public static void readConfig()
+    public static void readConfig(String fileName)
     {
         try
         {
             final ObjectMapper mapper = new ObjectMapper();
-            mapper.readValue(new File(Configuracion.getRutaConfiguracion() + "\\config.json"), ConfigurationData.class);
+            mapper.readValue(new File(Configuracion.getRutaConfiguracion() + "/" + fileName + ".json"), ConfigurationData.class);
         }
         catch (Exception e)
         {

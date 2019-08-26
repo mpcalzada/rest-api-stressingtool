@@ -1,7 +1,5 @@
 package com.ks;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ks.client.model.TransactionRequest;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,9 +17,6 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue() throws IOException
     {
-        String value = "";
-        TransactionRequest transactionRequest = new ObjectMapper().readValue(value, TransactionRequest.class);
-        System.out.println(transactionRequest.toString());
         assertTrue(true);
     }
 }

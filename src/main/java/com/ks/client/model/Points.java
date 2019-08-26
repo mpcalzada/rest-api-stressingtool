@@ -48,6 +48,9 @@ public class Points
     @SerializedName("reedemed_exp_amount")
     private String reedemedExpAmount = null;
 
+    @SerializedName("pool_ID")
+    private String poolID = null;
+
     @SerializedName("reedemed_exp_points")
     private String reedemedExpPoints = null;
 
@@ -236,6 +239,28 @@ public class Points
         this.reedemedExpAmount = reedemedExpAmount;
     }
 
+    public Points poolID(String poolID)
+    {
+        this.poolID = poolID;
+        return this;
+    }
+
+    /**
+     * Get poolID
+     *
+     * @return poolID
+     **/
+    @ApiModelProperty(value = "")
+    public String getPoolID()
+    {
+        return poolID;
+    }
+
+    public void setPoolID(String poolID)
+    {
+        this.poolID = poolID;
+    }
+
     public Points reedemedExpPoints(String reedemedExpPoints)
     {
         this.reedemedExpPoints = reedemedExpPoints;
@@ -337,13 +362,13 @@ public class Points
             return false;
         }
         Points points = (Points) o;
-        return Objects.equals(this.redeemedAmount, points.redeemedAmount) && Objects.equals(this.redeemedPoints, points.redeemedPoints) && Objects.equals(this.pointExponentialFactor, points.pointExponentialFactor) && Objects.equals(this.availableBalance, points.availableBalance) && Objects.equals(this.prevPointsBalance, points.prevPointsBalance) && Objects.equals(this.prevBalance, points.prevBalance) && Objects.equals(this.expPointsExpiration, points.expPointsExpiration) && Objects.equals(this.reedemedExpAmount, points.reedemedExpAmount) && Objects.equals(this.reedemedExpPoints, points.reedemedExpPoints) && Objects.equals(this.availableExpBalance, points.availableExpBalance) && Objects.equals(this.availableExpPoints, points.availableExpPoints) && Objects.equals(this.existingClient, points.existingClient);
+        return Objects.equals(this.redeemedAmount, points.redeemedAmount) && Objects.equals(this.redeemedPoints, points.redeemedPoints) && Objects.equals(this.pointExponentialFactor, points.pointExponentialFactor) && Objects.equals(this.availableBalance, points.availableBalance) && Objects.equals(this.prevPointsBalance, points.prevPointsBalance) && Objects.equals(this.prevBalance, points.prevBalance) && Objects.equals(this.expPointsExpiration, points.expPointsExpiration) && Objects.equals(this.reedemedExpAmount, points.reedemedExpAmount)&& Objects.equals(this.poolID, points.poolID) && Objects.equals(this.reedemedExpPoints, points.reedemedExpPoints) && Objects.equals(this.availableExpBalance, points.availableExpBalance) && Objects.equals(this.availableExpPoints, points.availableExpPoints) && Objects.equals(this.existingClient, points.existingClient);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(redeemedAmount, redeemedPoints, pointExponentialFactor, availableBalance, prevPointsBalance, prevBalance, expPointsExpiration, reedemedExpAmount, reedemedExpPoints, availableExpBalance, availableExpPoints, existingClient);
+        return Objects.hash(redeemedAmount, redeemedPoints, pointExponentialFactor, availableBalance, prevPointsBalance, prevBalance, expPointsExpiration, reedemedExpAmount,poolID, reedemedExpPoints, availableExpBalance, availableExpPoints, existingClient);
     }
 
 
@@ -361,6 +386,7 @@ public class Points
         sb.append("    prevBalance: ").append(toIndentedString(prevBalance)).append("\n");
         sb.append("    expPointsExpiration: ").append(toIndentedString(expPointsExpiration)).append("\n");
         sb.append("    reedemedExpAmount: ").append(toIndentedString(reedemedExpAmount)).append("\n");
+        sb.append("    poolID: ").append(toIndentedString(poolID)).append("\n");
         sb.append("    reedemedExpPoints: ").append(toIndentedString(reedemedExpPoints)).append("\n");
         sb.append("    availableExpBalance: ").append(toIndentedString(availableExpBalance)).append("\n");
         sb.append("    availableExpPoints: ").append(toIndentedString(availableExpPoints)).append("\n");

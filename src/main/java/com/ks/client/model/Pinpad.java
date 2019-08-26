@@ -248,12 +248,6 @@ public class Pinpad
     }
 
 
-    @SerializedName("entry_mode_2")
-    private EntryMode2Enum entryMode2 = null;
-
-    @SerializedName("card_sequence")
-    private Integer cardSequence = null;
-
     /**
      * Type of reader Sort order:   * &#39;0&#39; - Unknown   * &#39;1&#39; - No terminal   * &#39;2&#39; - Magnetic stripe   * &#39;3&#39; - Bar code   * &#39;4&#39; - OCR   * &#39;5&#39; - Magnetic stripe and EMV compatible chi reader   * &#39;6&#39; - Hand enteread   * &#39;7&#39; - MAgnetic stripe and hand-entered   * &#39;8&#39; - Magnetic stripe, hand-entered and EMV compatible chip reader   * &#39;9&#39; - EMV compatible chip reader
      */
@@ -326,6 +320,21 @@ public class Pinpad
             }
         }
     }
+
+    @SerializedName("entry_mode_2")
+    private EntryMode2Enum entryMode2 = null;
+
+    @SerializedName("card_sequence")
+    private Integer cardSequence = null;
+
+    @SerializedName("register_number")
+    private String registerNumber = null;
+
+    @SerializedName("transaction_number")
+    private String transactionNumber = null;
+
+    @SerializedName("cashier_id")
+    private String cashierId = null;
 
     @SerializedName("terminal_capability")
     private TerminalCapabilityEnum terminalCapability = null;
@@ -402,6 +411,30 @@ public class Pinpad
         this.cardSequence = cardSequence;
     }
 
+    public Pinpad cashierId(String cashierId)
+    {
+        this.cashierId = cashierId;
+        return this;
+    }
+
+    /**
+     * Get cashierId
+     *
+     * @return cashierId
+     **/
+    @ApiModelProperty(example = "001", value = "001")
+
+
+    public String getCashierId()
+    {
+        return cashierId;
+    }
+
+    public void setCashierId(String cashierId)
+    {
+        this.cashierId = cashierId;
+    }
+
     public Pinpad terminalCapability(TerminalCapabilityEnum terminalCapability)
     {
         this.terminalCapability = terminalCapability;
@@ -409,11 +442,12 @@ public class Pinpad
     }
 
     /**
-     * Type of reader Sort order:   * &#39;0&#39; - Unknown   * &#39;1&#39; - No terminal   * &#39;2&#39; - Magnetic stripe   * &#39;3&#39; - Bar code   * &#39;4&#39; - OCR   * &#39;5&#39; - Magnetic stripe and EMV compatible chi reader   * &#39;6&#39; - Hand enteread   * &#39;7&#39; - MAgnetic stripe and hand-entered   * &#39;8&#39; - Magnetic stripe, hand-entered and EMV compatible chip reader   * &#39;9&#39; - EMV compatible chip reader
+     * Type of reader Sort order:   * '0' - Unknown   * '1' - No terminal   * '2' - Magnetic stripe   * '3' - Bar code   * '4' - OCR   * '5' - Magnetic stripe and EMV compatible chi reader   * '6' - Hand enteread   * '7' - MAgnetic stripe and hand-entered   * '8' - Magnetic stripe, hand-entered and EMV compatible chip reader   * '9' - EMV compatible chip reader
      *
      * @return terminalCapability
      **/
     @ApiModelProperty(example = "8", required = true, value = "Type of reader Sort order:   * '0' - Unknown   * '1' - No terminal   * '2' - Magnetic stripe   * '3' - Bar code   * '4' - OCR   * '5' - Magnetic stripe and EMV compatible chi reader   * '6' - Hand enteread   * '7' - MAgnetic stripe and hand-entered   * '8' - Magnetic stripe, hand-entered and EMV compatible chip reader   * '9' - EMV compatible chip reader    ")
+
     public TerminalCapabilityEnum getTerminalCapability()
     {
         return terminalCapability;
@@ -436,6 +470,7 @@ public class Pinpad
      * @return tokenQ1
      **/
     @ApiModelProperty(example = "! Q100002 9 ", value = "Authorization mode identifier")
+
     public String getTokenQ1()
     {
         return tokenQ1;
@@ -458,6 +493,7 @@ public class Pinpad
      * @return tokenQ2
      **/
     @ApiModelProperty(example = "! Q200002 04", value = "Access mode identifier")
+
     public String getTokenQ2()
     {
         return tokenQ2;
@@ -466,6 +502,26 @@ public class Pinpad
     public void setTokenQ2(String tokenQ2)
     {
         this.tokenQ2 = tokenQ2;
+    }
+
+    public String getRegisterNumber()
+    {
+        return registerNumber;
+    }
+
+    public void setRegisterNumber(String registerNumber)
+    {
+        this.registerNumber = registerNumber;
+    }
+
+    public String getTransactionNumber()
+    {
+        return transactionNumber;
+    }
+
+    public void setTransactionNumber(String transactionNumber)
+    {
+        this.transactionNumber = transactionNumber;
     }
 
     @Override
@@ -480,29 +536,30 @@ public class Pinpad
             return false;
         }
         Pinpad pinpad = (Pinpad) o;
-        return Objects.equals(this.entryMode1, pinpad.entryMode1) && Objects.equals(this.entryMode2, pinpad.entryMode2) && Objects.equals(this.mit, pinpad.mit) && Objects.equals(this.cardSequence, pinpad.cardSequence) && Objects.equals(this.terminalCapability, pinpad.terminalCapability) && Objects.equals(this.tokenQ1, pinpad.tokenQ1) && Objects.equals(this.tokenQ2, pinpad.tokenQ2);
+        return Objects.equals(this.entryMode1, pinpad.entryMode1) && Objects.equals(this.entryMode2, pinpad.entryMode2) && Objects.equals(this.mit, pinpad.mit) && Objects.equals(this.cardSequence, pinpad.cardSequence)&& Objects.equals(this.transactionNumber, pinpad.transactionNumber)&& Objects.equals(this.cashierId, pinpad.cashierId)&& Objects.equals(this.registerNumber, pinpad.registerNumber) && Objects.equals(this.terminalCapability, pinpad.terminalCapability) && Objects.equals(this.tokenQ1, pinpad.tokenQ1) && Objects.equals(this.tokenQ2, pinpad.tokenQ2);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(entryMode1, entryMode2, mit, cardSequence, terminalCapability, tokenQ1, tokenQ2);
+        return Objects.hash(entryMode1, entryMode2, mit, cardSequence,transactionNumber,cashierId,registerNumber, terminalCapability, tokenQ1, tokenQ2);
     }
-
 
     @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Pinpad {\n");
-
-        sb.append("    entryMode1: ").append(toIndentedString(entryMode1)).append("\n");
-        sb.append("    entryMode2: ").append(toIndentedString(entryMode2)).append("\n");
-        sb.append("    mit: ").append(toIndentedString(mit)).append("\n");
-        sb.append("    cardSequence: ").append(toIndentedString(cardSequence)).append("\n");
-        sb.append("    terminalCapability: ").append(toIndentedString(terminalCapability)).append("\n");
-        sb.append("    tokenQ1: ").append(toIndentedString(tokenQ1)).append("\n");
-        sb.append("    tokenQ2: ").append(toIndentedString(tokenQ2)).append("\n");
+        sb.append("{\n");
+        sb.append("\"entry_mode_1\" : \"").append(toIndentedString(entryMode1)).append("\",\n");
+        sb.append("\"entry_mode_2\" : \"").append(toIndentedString(entryMode2)).append("\",\n");
+        sb.append("\"mit\" : \"").append(toIndentedString(mit)).append("\",\n");
+        sb.append("\"card_sequence\" : \"").append(toIndentedString(cardSequence)).append("\",\n");
+        sb.append("\"transaction_number\" : \"").append(toIndentedString(transactionNumber)).append("\",\n");
+        sb.append("\"cashier_id\" : \"").append(toIndentedString(cashierId)).append("\",\n");
+        sb.append("\"register_number\" : \"").append(toIndentedString(registerNumber)).append("\",\n");
+        sb.append("\"terminal_capability\" : \"").append(toIndentedString(terminalCapability)).append("\",\n");
+        sb.append("\"token_Q1\" : \"").append(toIndentedString(tokenQ1)).append("\",\n");
+        sb.append("\"token_Q2\" : \"").append(toIndentedString(tokenQ2)).append("\"\n");
         sb.append("}");
         return sb.toString();
     }
