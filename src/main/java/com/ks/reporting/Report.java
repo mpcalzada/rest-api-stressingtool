@@ -3,6 +3,7 @@ package com.ks.reporting;
 import com.ks.client.model.TransactionRequest;
 import com.ks.lib.Configuracion;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,15 +21,15 @@ public class Report
     }
 
     private static Report ourInstance = new Report();
-    private static FileWriter fileWriter;
+    private static BufferedWriter writer;
 
     private Report()
     {
         try
         {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy-HH:mm");
-            fileWriter = new FileWriter(new File(Configuracion.getRutaConfiguracion() + "/" + "Report-" + dateFormat.format(new Date()) + ".csv"));
-            fileWriter.write("trxID,response,time,error");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyyHHmm");
+            writer = new BufferedWriter(new FileWriter(Configuracion.getRutaConfiguracion() + "/output/" + "Report" + dateFormat.format(new Date()) + ".csv", true));
+            writer.write("trxID,response,time,error\n");
         }
         catch (Exception e)
         {
@@ -40,14 +41,27 @@ public class Report
     {
         try
         {
-            synchronized (fileWriter)
+            synchronized (writer)
             {
-                fileWriter.write(request.getTransactionId() + "," + response + "," + dateFormat.format(new Date()) + "," + error);
+                response = response != null ? response.replaceAll(",", " ") : "";
+                writer.write(request.getTransactionId() + "," + response + "," + dateFormat.format(new Date()) + "," + error + "\n");
             }
         }
         catch (IOException e)
         {
             System.out.println("Error al almacenar en reporte: " + request.getTransactionId() + "," + response + "," + dateFormat.format(new Date()) + "," + error + "\n" + e.getMessage());
+        }
+    }
+
+    public void close()
+    {
+        try
+        {
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error al cerrar reporte");
         }
     }
 }

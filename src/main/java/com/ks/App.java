@@ -63,6 +63,7 @@ public class App
                 Thread.sleep(3000);
             }
         }
+        Report.getInstance().close();
         Stats.finished();
         Stats.printResult();
     }
